@@ -21,7 +21,7 @@ public class Calculadora {
 	}
 	
 	boolean esPar(int num) {
-		if (num%3 ==0) {
+		if (num%2 ==0) {
 			return true;
 		} else {
 			return false;
@@ -34,9 +34,9 @@ public class Calculadora {
 			diagnostico = "Bajo peso";
 		} else if (imc>=18.5 && imc <=24.9) {
 			diagnostico= "Peso normal (saludable)";
-		} else if (imc>=25 && imc <=29.9) {
+		} else if (imc>24.9 && imc <=29.9) {
 			diagnostico= "Sobrepeso";
-		} else if (imc>=30 && imc <=40) {
+		} else if (imc>29.9 && imc <=40) {
 			diagnostico= "Obesidad premórbida";
 		} else {
 			diagnostico="Obesidad mórbida";
@@ -45,6 +45,7 @@ public class Calculadora {
 	}
 	
 	boolean esPrimo(int num) {
+		num=Math.abs(num);
 		for (int i=2; i<num;i++) {
 			if (num%i==0) return false;
 		}
@@ -54,6 +55,9 @@ public class Calculadora {
 	public long factorial(int n) {
         long producto=1;
         int i;
+        if (n<0) 
+        	throw new ArithmeticException(
+        			"Debe ser positivo");
         for (i = 2; i <= n; i++) {
         	producto =producto* i;
         }
